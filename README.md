@@ -1,4 +1,4 @@
-# VibeSync Backend 🎵
+# AUX Backend 🎵
 
 A production-grade collaborative music streaming backend built with FastAPI that enables synchronized listening experiences with enterprise-level security, intelligent moderation, and comprehensive music metadata.
 
@@ -69,7 +69,7 @@ cp .env.example .env
 
 ```env
 # Application Configuration
-APP_NAME=VibeSync
+APP_NAME=AUX
 ENVIRONMENT=development
 
 # Server Configuration
@@ -86,14 +86,14 @@ SYNC_TOLERANCE_SECONDS=2.0
 # Default Community Room
 DEFAULT_ROOM_CODE=DEFAULT
 DEFAULT_ROOM_HOST_ID=system
-DEFAULT_ROOM_HOST_NAME=VibeSync Community
+DEFAULT_ROOM_HOST_NAME=AUX Community
 
 # Moderation Settings
 MAX_SONGS_PER_USER=3
 MAX_SONG_DURATION_SECONDS=480
 
 # Security (IMPORTANT: Change in production!)
-ENCRYPTION_KEY=VibeSync2025SecureKey1234567890X
+ENCRYPTION_KEY=AUX2025SecureKey1234567890X
 ```
 
 ### 3. Run the Server
@@ -386,7 +386,7 @@ streamBackend/
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `APP_NAME` | VibeSync | Application name |
+| `APP_NAME` | AUX | Application name |
 | `ENVIRONMENT` | development | Environment (dev/staging/prod) |
 | `HOST` | 0.0.0.0 | Server bind address |
 | `PORT` | 8000 | Server port |
@@ -395,7 +395,7 @@ streamBackend/
 | `SYNC_TOLERANCE_SECONDS` | 2.0 | Sync accuracy threshold |
 | `DEFAULT_ROOM_CODE` | DEFAULT | Default community room code |
 | `DEFAULT_ROOM_HOST_ID` | system | Default room host ID |
-| `DEFAULT_ROOM_HOST_NAME` | VibeSync Community | Default room host name |
+| `DEFAULT_ROOM_HOST_NAME` | AUX Community | Default room host name |
 | `MAX_SONGS_PER_USER` | 3 | User quota limit |
 | `MAX_SONG_DURATION_SECONDS` | 480 | Max song duration (8 min) |
 | `ENCRYPTION_KEY` | **REQUIRED** | 32-byte AES-256 key |
@@ -442,8 +442,8 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", 
 ```
 
 ```bash
-docker build -t vibesync-backend .
-docker run -p 8000:8000 --env-file .env vibesync-backend
+docker build -t AUX-backend .
+docker run -p 8000:8000 --env-file .env AUX-backend
 ```
 
 ### Production Checklist
@@ -463,14 +463,14 @@ docker run -p 8000:8000 --env-file .env vibesync-backend
 
 ```ini
 [Unit]
-Description=VibeSync Backend
+Description=AUX Backend
 After=network.target
 
 [Service]
 Type=simple
 User=www-data
-WorkingDirectory=/opt/vibesync
-EnvironmentFile=/opt/vibesync/.env
+WorkingDirectory=/opt/AUX
+EnvironmentFile=/opt/AUX/.env
 ExecStart=/usr/bin/uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
 Restart=always
 
@@ -566,7 +566,7 @@ MIT License - see LICENSE file for details
 
 - **Documentation**: See `/docs` endpoint
 - **Issues**: GitHub Issues
-- **Email**: support@vibesync.example
+- **Email**: support@AUX.example
 
 ---
 
