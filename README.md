@@ -409,43 +409,6 @@ streamBackend/
 python -c "import secrets; print(secrets.token_urlsafe(32)[:32])"
 ```
 
-## 📚 API Documentation
-
-Comprehensive API examples available in [curls.md](curls.md):
-
-- Creating rooms
-- Adding songs with validation
-- Removing songs (secure)
-- Searching with full metadata
-- Getting sync state with next songs
-- Handling encrypted responses
-- Error scenarios
-
-## 🚀 Deployment
-
-### Docker (Recommended)
-
-```dockerfile
-FROM python:3.11-slim
-
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-ENV ENVIRONMENT=production
-ENV HOST=0.0.0.0
-ENV PORT=8000
-
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
-```
-
-```bash
-docker build -t AUX-backend .
-docker run -p 8000:8000 --env-file .env AUX-backend
-```
-
 ### Production Checklist
 
 - [ ] Generate secure `ENCRYPTION_KEY` (32 bytes)
@@ -488,25 +451,19 @@ Error: AES key must be 32 bytes
 ```
 **Solution**: Ensure `ENCRYPTION_KEY` is exactly 32 characters.
 
-**2. Content-Length Mismatch**
-```
-Response content longer than Content-Length
-```
-**Solution**: Already fixed in middleware - ensure you're on latest version.
-
-**3. User Quota Exceeded**
+**2. User Quota Exceeded**
 ```json
 {"success": false, "error": "User has reached maximum of 3 songs in queue"}
 ```
 **Solution**: User must wait for their songs to finish playing or be removed.
 
-**4. Song Too Long**
+**3. Song Too Long**
 ```json
 {"success": false, "error": "Song duration exceeds maximum allowed"}
 ```
 **Solution**: Choose songs under 8 minutes or adjust `MAX_SONG_DURATION_SECONDS`.
 
-**5. Duplicate Song**
+**4. Duplicate Song**
 ```json
 {"success": false, "error": "A similar song is already in the queue"}
 ```
@@ -566,7 +523,7 @@ MIT License - see LICENSE file for details
 
 - **Documentation**: See `/docs` endpoint
 - **Issues**: GitHub Issues
-- **Email**: support@AUX.example
+- **Email**: aarav.18o2005@gmail.com
 
 ---
 
