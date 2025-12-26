@@ -158,11 +158,14 @@ class SyncState(BaseModel):
     # Calculated seek position (for convenience)
     seek_position_seconds: float = 0.0
     
-    # Next 3-5 songs for seamless playback
+    # All songs in queue (upcoming songs)
     next_songs: list[QueuedSong] = Field(default_factory=list)
     
     # Queue info
     queue_length: int = 0
+    
+    # Current member count in the room
+    member_count: int = 0
 
 
 # ============== Request Models ==============

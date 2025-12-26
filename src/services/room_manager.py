@@ -483,8 +483,8 @@ class RoomManager:
         
         seek_position = self._calculate_seek_position(room)
         
-        # Get next 3-5 songs from queue
-        next_songs = room.queue[:5] if len(room.queue) >= 5 else room.queue[:3]
+        # Get all songs from queue
+        next_songs = room.queue
         
         return SyncState(
             current_song=room.current_song,
@@ -494,6 +494,7 @@ class RoomManager:
             seek_position_seconds=seek_position,
             next_songs=next_songs,
             queue_length=len(room.queue),
+            member_count=len(room.members),
         )
     
     # ==================== Member Management ====================
